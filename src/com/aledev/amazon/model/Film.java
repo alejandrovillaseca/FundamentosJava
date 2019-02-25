@@ -1,6 +1,6 @@
 package com.aledev.amazon.model;
 
-public class Film {
+public abstract class Film {
 	public String title;
 	public String genre;
 	public String creator;
@@ -58,5 +58,5 @@ public class Film {
 		this.viewed = viewed;
 	}
 	
-	
+	public abstract void view();
 }

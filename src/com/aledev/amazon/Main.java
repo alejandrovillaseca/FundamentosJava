@@ -12,7 +12,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		//Film film = new Movie("", "", "", 1, (short)199);
 		showMenu();
 		
 	}
@@ -22,7 +22,7 @@ public class Main {
 		do {
 			System.out.println("Bienvenidos amazon Viewer");
 			System.err.println("");
-			System.out.println("Selecciona el número de la película");
+			System.out.println("Selecciona el nÃºmero de la pelÃ­cula");
 			System.out.println("1. Movies");
 			System.out.println("2. Series");
 			System.out.println("3. Books");
@@ -63,7 +63,7 @@ public class Main {
 			Report(new Date());
 			break;
 		default:
-			System.out.println("Debes seleccionar una opción válida...");
+			System.out.println("Debes seleccionar una opciï¿½n vï¿½lida...");
 			break;
 		}
 		
@@ -106,7 +106,7 @@ public class Main {
 		String content = "";
 		for (Movie movie : movies) {
 			if(movie.getIsViewed())
-				content += movie.getTitle() + "\n"; //se puede crear un método tostring en movie para que imprima todo lo que queremos.
+				content += movie.getTitle() + "\n"; //se puede crear un mï¿½todo tostring en movie para que imprima todo lo que queremos.
 		}
 
 		report.setNameFile("reporteNew" + dateString);
@@ -123,7 +123,7 @@ public class Main {
 		String content = "";
 		for (Movie movie : movies) {
 			if(movie.getIsViewed())
-				content += movie.getTitle() + "\n"; //se puede crear un método tostring en movie para que imprima todo lo que queremos.
+				content += movie.getTitle() + "\n"; //se puede crear un mï¿½todo tostring en movie para que imprima todo lo que queremos.
 		}
 		report.setContent(content);
 		report.makeReport();
@@ -155,18 +155,7 @@ public class Main {
 			
 			if (response > 0) {
 				Movie movieSelected = movies.get(response - 1);
-				movieSelected.setViewed(true);
-				Date dateI = movieSelected.startToSee(new Date());
-				
-				for (int i = 0; i < 100000; i++) {
-					System.out.println("..........");
-				}
-				
-				
-				//Terminé de verla
-				movieSelected.stopToSee(dateI, new Date());
-				System.out.println("Viste la película " + movieSelected.title + " y duró " + movieSelected.timeViewed + " milisegundos");
-
+				movieSelected.view();
 			}
 						
 		}while(exit != 0);
