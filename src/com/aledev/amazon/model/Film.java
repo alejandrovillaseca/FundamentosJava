@@ -1,5 +1,15 @@
 package com.aledev.amazon.model;
 
+import java.util.Date;
+/**
+ * <h1>Film</h1>
+ * Es una clase padre abstracta
+ * <p>
+ * Contiene método abstracto {@code Films} :D
+ * @author s5098547
+ * @version 1.0
+ * @
+ */
 public abstract class Film {
 	public String title;
 	public String genre;
@@ -34,7 +44,7 @@ public abstract class Film {
 		this.creator = creator;
 	}
 	public int getDuration() {
-		return duration;
+ 		return duration;
 	}
 	public void setDuration(int duration) {
 		this.duration = duration;
@@ -57,6 +67,16 @@ public abstract class Film {
 	public void setViewed(boolean viewed) {
 		this.viewed = viewed;
 	}
-	
+	/**
+	 * Es un m�todo abstracto obligatorio de implementar
+	 */
 	public abstract void view();
+	public void stopToSee(Date dateI, Date dateF) {
+		// TODO Auto-generated method stub
+		
+	}
+	public Date startToSee(Date dateI) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -1,5 +1,6 @@
 package com.aledev.amazon.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Book extends Publication implements IVisualizable{
@@ -9,12 +10,10 @@ public class Book extends Publication implements IVisualizable{
 	private boolean readed;
 	private int timeReaded;
 
-	public Book(String title, Date editionDate, String editorial, String[] authors, String isbn, boolean readed,
-			int timeReaded) {
-		super(title, editionDate, editorial, authors);
-		this.isbn = isbn;
-		this.readed = readed;
-		this.timeReaded = timeReaded;
+	public Book(String title, Date edititionDate, String editorial, String[] authors) {
+		super(title, edititionDate, editorial, authors);
+		// TODO Auto-generated constructor stub
+		setAuthors(authors);
 	}
 	
 	public int getId() {
@@ -62,6 +61,32 @@ public class Book extends Publication implements IVisualizable{
 		
 	}
 	
-
+	public static ArrayList<Book> makeBookList() {
+		ArrayList<Book> books = new ArrayList<Book>();
+		String[] authors = new String[3];
+		for (int i = 0; i < 3; i++) {
+			authors[i] = "author "+i;
+		}
+		for (int i = 1; i <= 5; i++) {
+			books.add(new Book("Book " + i, new Date(), "editorial " + i, authors));
+		}
+		
+		return books;
+	}
+	
+	public void view() {
+		setReaded(true);
+		Date dateI = startToSee(new Date());
+		
+		for (int i = 0; i < 100000; i++) {
+			System.out.println("..........");
+		}
+		
+		//Termine de verla
+		stopToSee(dateI, new Date());
+		System.out.println();
+		System.out.println("Leíste: " + toString());
+		System.out.println("Por: " + getTimeReaded() + " milisegundos");
+	}
 	
 }

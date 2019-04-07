@@ -3,7 +3,7 @@ package com.aledev.amazon.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Serie extends Film {
+public class Serie extends Film {
 	private int id;
 	private int sessionQuantity;
 	private List<Chapter> chapters;
@@ -32,17 +32,38 @@ public abstract class Serie extends Film {
 	public List<Chapter> getChapters() {
 		return chapters;
 	}
-//	public static ArrayList<Serie> makeSeriesList() {
-//		ArrayList<Serie> series = new ArrayList<>();
-//
-//		for (int i = 1; i <= 5; i++) {
-//			Serie serie = new Serie("Serie " + i, "Genre " + i, "Creator " + i, 1200 + i, 5 + i);
-//			serie.setChapters(Chapter.makeChaptersList(serie));
-//			series.add(serie);
-//		}
-//
-//		return series;
-//	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return  "\n :: SERIE ::" + 
+				"\n Title: " + getTitle() +
+				"\n Genero: " + getGenre() + 
+				"\n Year: " + getYear() + 
+				"\n Creator: " + getCreator() +
+				"\n Duration: " + getDuration();
+	}
+
+	public static ArrayList<Serie> makeSeriesList() {
+		ArrayList<Serie> series = new ArrayList<Serie>();
+		
+		for (int i = 1; i <= 5; i++) {
+			Serie serie = new Serie("Serie "+i, "genero "+i, "creador "+i, 1200, 5);
+			serie.setChapters(Chapter.makeChaptersList(serie));
+			series.add(serie);
+			
+		}
+		
+		return series;
+	}
+
+	public void setChapters(ArrayList<Chapter> chapters) {
+		this.chapters = chapters;
+	}
 	
+	@Override
+	public void view() {
+		setViewed(true);
+	}
 	
 }

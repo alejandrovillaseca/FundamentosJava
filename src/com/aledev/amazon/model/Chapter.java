@@ -24,7 +24,7 @@ public abstract class Chapter extends Movie{
 		this.sessionNumber = sessionNumber;
 	}
 	public static ArrayList<Chapter> makeChaptersList(Serie serie) {
-		  ArrayList<Chapter> chapters = new ArrayList<>();
+		  ArrayList<Chapter> chapters = new ArrayList<Chapter>();
 		  
 		  for (int i = 1; i <= 5; i++) {
 		    //chapters.add(new Chapter("Chapter " + i, "Genre " + i, "Creator " + i, 45 + i, (short) (2017 + i), i, serie));
@@ -56,7 +56,7 @@ public abstract class Chapter extends Movie{
 			}
 		}
 		if(chapterViewedCounter == chapters.size()) {
-			getSerie().setViewed(true);
+			setViewed(true);
 		}
 	}
 	

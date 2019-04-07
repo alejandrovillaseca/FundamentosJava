@@ -3,7 +3,13 @@ package com.aledev.amazon.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+/**
+ * Movie hereda de {@link Film}
+ * Implementa de {@link IVisualizable}
+ * 
+ * @author s5098547
+ *
+ */
 public class Movie extends Film implements IVisualizable{
 	public int id;
 	public int timeViewed;
@@ -30,13 +36,17 @@ public class Movie extends Film implements IVisualizable{
 	public void setTimeReaded(int timeViewed) {
 		this.timeViewed = timeViewed;
 	}
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Date startToSee(Date dateI) {
 		// TODO Auto-generated method stub
 		return dateI;
 	}
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void stopToSee(Date dateI, Date dateF) {
 		// TODO Auto-generated method stub
@@ -49,7 +59,7 @@ public class Movie extends Film implements IVisualizable{
 	
 	public static List<Movie> makeMovies(){
 		try {
-			List<Movie> movies = new ArrayList<>();
+			List<Movie> movies = new ArrayList<Movie>();
 			for (int i = 1; i < 10; i++) {
 				movies.add(new Movie("Movie" + i, "Genero" + i, "Creador" + i, 120+i, (short)(2017+i)));
 			}
@@ -59,7 +69,9 @@ public class Movie extends Film implements IVisualizable{
 			return null;
 		}
 	}
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void view() {
 		// TODO Auto-generated method stub

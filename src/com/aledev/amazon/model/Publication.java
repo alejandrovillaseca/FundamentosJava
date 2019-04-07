@@ -45,6 +45,14 @@ public class Publication {
 	public void setAuthors(String[] authors) {
 		this.authors = authors;
 	}
+	public Date startToSee(Date dateI) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void stopToSee(Date dateI, Date dateF) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }
