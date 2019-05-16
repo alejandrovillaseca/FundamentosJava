@@ -8,7 +8,7 @@ import java.util.Date;
  * Contiene método abstracto {@code Films} :D
  * @author s5098547
  * @version 1.0
- * @
+ * 
  */
 public abstract class Film {
 	public String title;
@@ -25,6 +25,7 @@ public abstract class Film {
 		this.creator = creator;
 		this.duration = duration;
 	}
+	public Film() {};
 	public String getTitle() {
 		return title;
 	}
@@ -78,5 +79,8 @@ public abstract class Film {
 	public Date startToSee(Date dateI) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public boolean getMovieViewed() {
+		return true;
 	}
 }

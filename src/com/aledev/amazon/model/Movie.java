@@ -1,8 +1,10 @@
 package com.aledev.amazon.model;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
+
+import com.aledev.amazon.dao.MovieDAO;
 /**
  * Movie hereda de {@link Film}
  * Implementa de {@link IVisualizable}
@@ -10,7 +12,7 @@ import java.util.List;
  * @author s5098547
  *
  */
-public class Movie extends Film implements IVisualizable{
+public class Movie extends Film implements IVisualizable, MovieDAO{
 	public int id;
 	public int timeViewed;
 	
@@ -18,6 +20,7 @@ public class Movie extends Film implements IVisualizable{
 		super(title, genre, creator, duration);
 		setYear(year);
 	}
+	public Movie() {};
 
 	public void showData() {
 		System.out.println("Title: " + this.title);
@@ -59,16 +62,17 @@ public class Movie extends Film implements IVisualizable{
 	
 	public static List<Movie> makeMovies(){
 		try {
-			List<Movie> movies = new ArrayList<Movie>();
-			for (int i = 1; i < 10; i++) {
-				movies.add(new Movie("Movie" + i, "Genero" + i, "Creador" + i, 120+i, (short)(2017+i)));
-			}
-			return movies;
+			Movie movie = new Movie();
+			return movie.read();
 			
 		} catch (Exception e) {
 			return null;
 		}
 	}
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -76,6 +80,14 @@ public class Movie extends Film implements IVisualizable{
 	public void view() {
 		// TODO Auto-generated method stub
 		setViewed(true);
+		Movie movie = new Movie();
+		try {
+			movie.setMovieViewed(this);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		Date dateI = startToSee(new Date());
 		
 		for (int i = 0; i < 100000; i++) {
@@ -83,7 +95,22 @@ public class Movie extends Film implements IVisualizable{
 		}		
 		//Terminé de verla
 		stopToSee(dateI, new Date());
-		System.out.println("Viste la pelï¿½cula " + title + " y durï¿½ " + timeViewed + " milisegundos");
+		System.out.println("Viste la película " + title + " y durï¿½ " + timeViewed + " milisegundos");
+	}
+	@Override
+	public boolean getMovieViewed() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return  "\n :: MOVIE ::" + 
+				"\n Title: " + getTitle() +
+				"\n Genero: " + getGenre() + 
+				"\n Year: " + getYear() + 
+				"\n Creator: " + getCreator() +
+				"\n Duration: " + getDuration();
+	}
 }

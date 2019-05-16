@@ -29,7 +29,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		// Film film = new Movie("", "", "", 1, (short)199);
-
+		
 		showMenu();
 
 	}
@@ -39,7 +39,7 @@ public class Main {
 		do {
 			System.out.println("Bienvenidos amazon Viewer");
 			System.err.println("");
-			System.out.println("Selecciona el nÃºmero de la pelÃ­cula");
+			System.out.println("Selecciona el número de la película");
 			System.out.println("1. Movies");
 			System.out.println("2. Series");
 			System.out.println("3. Books");
@@ -58,7 +58,8 @@ public class Main {
 
 		switch (response) {
 		case 0:
-			// Salir
+			System.out.println("Saliendo...");
+			System.exit(1);
 			break;
 		case 1:
 			showMovies();
@@ -82,7 +83,6 @@ public class Main {
 			System.out.println("Debes seleccionar una opciï¿½n vï¿½lida...");
 			break;
 		}
-
 		showMovies();
 	}
 
@@ -217,8 +217,25 @@ public class Main {
 		String content = "";
 		for (Movie movie : movies) {
 			if (movie.getIsViewed())
-				content += movie.getTitle() + "\n"; // se puede crear un mï¿½todo tostring en movie para que imprima
+				content += movie.toString() + "\n"; // se puede crear un mï¿½todo tostring en movie para que imprima
 													// todo lo que queremos.
+		}
+		for (Serie serie : series) {
+			List<Chapter> chapters = serie.getChapters();
+			for (Chapter chapter : chapters) {
+				if (chapter.getIsViewed()) {
+					content += chapter.toString() + "\n";
+					
+				}
+			}	
+		}
+		
+		
+		for (Book book : books) {
+			if (book.isReaded()) {
+				content += book.toString() + "\n";
+				
+			}
 		}
 		report.setContent(content);
 		report.makeReport();

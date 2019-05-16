@@ -2,7 +2,12 @@ package com.aledev.amazon.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Hereda de {@link Movie}
+ * @see Film
+ * @author s5098547
+ *
+ */
 public abstract class Chapter extends Movie{
 	
 	
